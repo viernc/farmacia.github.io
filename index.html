@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Tesouraria Turma 125</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .highlight {
+      background: #4CAF50;
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .pix {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .pix div {
+      flex: 1;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background: #3498db;
+      color: white;
+    }
+
+    .total {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    input[type="checkbox"] {
+      transform: scale(1.2);
+    }
+
+    .btn {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #2980b9;
+    }
+
+    input {
+      padding: 6px;
+      margin-right: 5px;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <h1>💰 VALORES ARRECADADOS - TURMA 125 FARMÁCIA</h1>
+
+  <div class="card highlight">
+    Valor mensal: R$ <span id="valorMensal">5</span>
+  </div>
+
+  <div class="card">
+    <h2>💳 Pagamento via Pix</h2>
+    <div class="pix">
+      <div>
+        <p><strong>Chave Pix:</strong> 86981237979</p>
+        <p>Envie o comprovante após pagamento.</p>
+      </div>
+      <div>
+        <img src="MEU_PIX.png" width="150">
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>👥 Pagamentos Mês de Maio</h2>
+    <table id="tabelaPagamentos">
+      <tr>
+        <th>Nome</th>
+        <th>Pago</th>
+      </tr>
+    </table>
+  </div>
+
+  <div class="card" style="text-align:center;">
+  <h2>💰 Total em Caixa</h2>
+  <p style="font-size: 40px; font-weight: bold; color: #27ae60;">
+    R$ <span id="total">0</span>
+  </p>
+  <p style="color: #777;">Atualizado automaticamente</p>
+</div>
+
+
+<script>
+  const valorMensal = 5;
+
+  const alunos = [
+    "ALEXANDRE", "ALANE BEATRIZ", "AMARA VITÓRIA", "ANA CAROLINE", "ANGÊLO GABRIEL", "ANGÊLO VINICIUS", "ARIELLY", "GISELY", "GLÓRIA", "GUSTAVO CASTRO", "GUSTAVO HENRIQUE", "ILAN CASSIO", "JOÃO GABRIEL", "JOÃO HENRIQUE", "JOÃO LUCAS", "JOHN CALEBE", "JULIANA NAYRA", "LUCAS LOHAN", "MARCONE", "MARIA CLARA LIMA", "MARIA CLARA MENDES", "MARIA JOANA", "RANE GEOVANA", "RICHARLYSON", "ROBERTA", "ROBERTA", "SÁVIO", "STEFANY", "THIAGO", "VANDA", "WENDELL", "YANA"
+  ];
+
+  const tabela = document.getElementById("tabelaPagamentos");
+  const totalSpan = document.getElementById("total");
+
+  let total = 0;
+
+  alunos.forEach(nome => {
+    const row = document.createElement("tr");
+
+    const nomeTd = document.createElement("td");
+    nomeTd.textContent = nome;
+
+    const checkTd = document.createElement("td");
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+
+    checkbox.addEventListener("change", () => {
+      if (checkbox.checked) {
+        total += valorMensal;
+      } else {
+        total -= valorMensal;
+      }
+      totalSpan.textContent = total;
+    });
+
+    checkTd.appendChild(checkbox);
+
+    row.appendChild(nomeTd);
+    row.appendChild(checkTd);
+
+    tabela.appendChild(row);
+  });
+
+  function addDespesa() {
+    const desc = document.getElementById("desc").value;
+    const valor = parseFloat(document.getElementById("valorDespesa").value);
+    const resp = document.getElementById("resp").value;
+
+    if (!desc || !valor || !resp) return;
+
+    const tabela = document.getElementById("tabelaDespesas");
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+      <td>${desc}</td>
+      <td>R$ ${valor}</td>
+      <td>${resp}</td>
+    `;
+
+    tabela.appendChild(row);
+
+    let totalDespesas = document.getElementById("totalDespesas");
+    totalDespesas.textContent = parseFloat(totalDespesas.textContent) + valor;
+
+    document.getElementById("desc").value = "";
+    document.getElementById("valorDespesa").value = "";
+    document.getElementById("resp").value = "";
+  }
+</script>
+
+</body>
+</html>
