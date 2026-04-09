@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Tesouraria Turma 125</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -68,20 +69,11 @@
       color: white;
     }
 
-    .total {
-      font-weight: bold;
-      margin-top: 10px;
-    }
-
-    input[type="checkbox"] {
-      transform: scale(1.2);
-    }
-
     .btn {
       background: #3498db;
       color: white;
       border: none;
-      padding: 8px 12px;
+      padding: 6px 10px;
       border-radius: 6px;
       cursor: pointer;
     }
@@ -90,13 +82,9 @@
       background: #2980b9;
     }
 
-    input {
-      padding: 6px;
-      margin-right: 5px;
-    }
-
   </style>
 </head>
+
 <body>
 
 <div class="container">
@@ -125,29 +113,46 @@
     <table id="tabelaPagamentos">
       <tr>
         <th>Nome</th>
-        <th>Pago</th>
+        <th>Status</th>
+        <th>Ação</th>
       </tr>
     </table>
   </div>
 
   <div class="card" style="text-align:center;">
-  <h2>💰 Total em Caixa</h2>
-  <p style="font-size: 40px; font-weight: bold; color: #27ae60;">
-    R$ <span id="total">0</span>
-  </p>
-  <p style="color: #777;">Atualizado automaticamente</p>
+    <h2>💰 Total em Caixa</h2>
+    <p style="font-size: 40px; font-weight: bold; color: #27ae60;">
+      R$ <span id="total">0</span>
+    </p>
+    <p style="color: #777;">Atualizado automaticamente</p>
+  </div>
+
 </div>
 
-
 <script>
-  const valorMensal = 5;
+const valorMensal = 5;
 
-  const alunos = [
-    "ALEXANDRE", "ALANE BEATRIZ", "AMARA VITÓRIA", "ANA CAROLINE", "ANGÊLO GABRIEL", "ANGÊLO VINICIUS", "ARIELLY", "GISELY", "GLÓRIA", "GUSTAVO CASTRO", "GUSTAVO HENRIQUE", "ILAN CASSIO", "JOÃO GABRIEL", "JOÃO HENRIQUE", "JOÃO LUCAS", "JOHN CALEBE", "JULIANA NAYRA", "LUCAS LOHAN", "MARCONE", "MARIA CLARA LIMA", "MARIA CLARA MENDES", "MARIA JOANA", "RANE GEOVANA", "RICHARLYSON", "ROBERTA", "ROBERTA", "SÁVIO", "STEFANY", "THIAGO", "VANDA", "WENDELL", "YANA"
-  ];
+const alunos = [
+  "ALEXANDRE", "ALANE BEATRIZ", "AMARA VITÓRIA", "ANA CAROLINE", "ANGÊLO GABRIEL", "ANGÊLO VINICIUS", "ARIELLY", "GISELY", "GLÓRIA", "GUSTAVO CASTRO", "GUSTAVO HENRIQUE", "ILAN CASSIO", "JOÃO GABRIEL", "JOÃO HENRIQUE", "JOÃO LUCAS", "JOHN CALEBE", "JULIANA NAYRA", "LUCAS LOHAN", "MARCONE", "MARIA CLARA LIMA", "MARIA CLARA MENDES", "MARIA JOANA", "RANE GEOVANA", "RICHARLYSON", "ROBERTA", "SÁVIO", "STEFANY", "THIAGO", "VANDA", "WENDELL", "YANA"
+];
 
-  const tabela = document.getElementById("tabelaPagamentos");
-  const totalSpan = document.getElementById("total");
+let pagamentos = JSON.parse(localStorage.getItem("pagamentos")) || {};
+
+const tabela = document.getElementById("tabelaPagamentos");
+const totalSpan = document.getElementById("total");
+
+// 🔒 verifica se é admin
+const params = new URLSearchParams(window.location.search);
+const isAdmin = params.get("admin") === "123";
+
+function renderPagamentos() {
+  tabela.innerHTML = `
+    <tr>
+      <th>Nome</th>
+      <th>Status</th>
+      <th>Ação</th>
+    </tr>
+  `;
 
   let total = 0;
 
@@ -157,52 +162,45 @@
     const nomeTd = document.createElement("td");
     nomeTd.textContent = nome;
 
-    const checkTd = document.createElement("td");
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
+    const statusTd = document.createElement("td");
 
-    checkbox.addEventListener("change", () => {
-      if (checkbox.checked) {
-        total += valorMensal;
-      } else {
-        total -= valorMensal;
-      }
-      totalSpan.textContent = total;
-    });
+    if (pagamentos[nome]) {
+      statusTd.innerHTML = `✅ Pago em: ${pagamentos[nome]}`;
+      total += valorMensal;
+    } else {
+      statusTd.innerHTML = `❌ Não pago`;
+    }
 
-    checkTd.appendChild(checkbox);
+    const btnTd = document.createElement("td");
+
+    if (isAdmin) {
+      const btn = document.createElement("button");
+      btn.textContent = "Marcar";
+      btn.className = "btn";
+
+      btn.onclick = () => {
+        const hoje = new Date().toLocaleDateString();
+        pagamentos[nome] = hoje;
+        localStorage.setItem("pagamentos", JSON.stringify(pagamentos));
+        renderPagamentos();
+      };
+
+      btnTd.appendChild(btn);
+    } else {
+      btnTd.innerHTML = "🔒";
+    }
 
     row.appendChild(nomeTd);
-    row.appendChild(checkTd);
+    row.appendChild(statusTd);
+    row.appendChild(btnTd);
 
     tabela.appendChild(row);
   });
 
-  function addDespesa() {
-    const desc = document.getElementById("desc").value;
-    const valor = parseFloat(document.getElementById("valorDespesa").value);
-    const resp = document.getElementById("resp").value;
+  totalSpan.textContent = total.toFixed(2);
+}
 
-    if (!desc || !valor || !resp) return;
-
-    const tabela = document.getElementById("tabelaDespesas");
-    const row = document.createElement("tr");
-
-    row.innerHTML = `
-      <td>${desc}</td>
-      <td>R$ ${valor}</td>
-      <td>${resp}</td>
-    `;
-
-    tabela.appendChild(row);
-
-    let totalDespesas = document.getElementById("totalDespesas");
-    totalDespesas.textContent = parseFloat(totalDespesas.textContent) + valor;
-
-    document.getElementById("desc").value = "";
-    document.getElementById("valorDespesa").value = "";
-    document.getElementById("resp").value = "";
-  }
+renderPagamentos();
 </script>
 
 </body>
