@@ -3,204 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <title>Tesouraria Turma 125</title>
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f7fb;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
-
-    h1 {
-      text-align: center;
-      color: #2c3e50;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .card {
-      background: white;
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    .highlight {
-      background: #4CAF50;
-      color: white;
-      padding: 15px;
-      border-radius: 10px;
-      text-align: center;
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    .pix {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .pix div {
-      flex: 1;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    th, td {
-      padding: 10px;
-      border-bottom: 1px solid #ddd;
-      text-align: left;
-    }
-
-    th {
-      background: #3498db;
-      color: white;
-    }
-
-    .btn {
-      background: #3498db;
-      color: white;
-      border: none;
-      padding: 6px 10px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      background: #2980b9;
-    }
-
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<div class="container">
+<header class="topo">
+  <h1>TESOURARIA</h1>
+  <p>Turma 125 - Farmácia</p>
+</header>
 
-  <h1>💰 VALORES ARRECADADOS - TURMA 125 FARMÁCIA</h1>
+<section class="hero">
+  <h2>Controle Financeiro da Turma</h2>
+  <p>Transparência e organização dos pagamentos mensais</p>
+</section>
 
-  <div class="card highlight">
-    Valor mensal: R$ <span id="valorMensal">5</span>
+<section class="pix">
+  <div>
+    <h3>Pagamento via Pix</h3>
+    <p><strong>Chave:</strong> 86981237979</p>
+    <p>Envie o comprovante após o pagamento</p>
   </div>
+  <img src="MEU_PIX.png">
+</section>
 
-  <div class="card">
-    <h2>💳 Pagamento via Pix</h2>
-    <div class="pix">
-      <div>
-        <p><strong>Chave Pix:</strong> 86981237979</p>
-        <p>Envie o comprovante após pagamento.</p>
-      </div>
-      <div>
-        <img src="MEU_PIX.png" width="150">
-      </div>
-    </div>
-  </div>
+<section class="lista">
+  <h2>Pagamentos - Maio</h2>
 
-  <div class="card">
-    <h2>👥 Pagamentos Mês de Maio</h2>
-    <table id="tabelaPagamentos">
-      <tr>
-        <th>Nome</th>
-        <th>Status</th>
-        <th>Ação</th>
-      </tr>
-    </table>
-  </div>
+  <div class="aluno nao">ALEXANDRE <span>Não pago</span></div>
+  <div class="aluno nao">ALANE BEATRIZ <span>Não pago</span></div>
+  <div class="aluno nao">AMARA VITÓRIA <span>Não pago</span></div>
+  <div class="aluno nao">ANA CAROLINE <span>Não pago</span></div>
+  <div class="aluno nao">ANGÊLO GABRIEL <span>Não pago</span></div>
+  <div class="aluno nao">ANGÊLO VINICIUS <span>Não pago</span></div>
+  <div class="aluno nao">ARIELLY <span>Não pago</span></div>
+  <div class="aluno nao">GISELY <span>Não pago</span></div>
+  <div class="aluno nao">GLÓRIA <span>Não pago</span></div>
+  <div class="aluno nao">GUSTAVO CASTRO <span>Não pago</span></div>
+  <div class="aluno nao">GUSTAVO HENRIQUE <span>Não pago</span></div>
+  <div class="aluno nao">ILAN CASSIO <span>Não pago</span></div>
+  <div class="aluno nao">JOÃO GABRIEL <span>Não pago</span></div>
+  <div class="aluno nao">JOÃO HENRIQUE <span>Não pago</span></div>
+  <div class="aluno nao">JOÃO LUCAS <span>Não pago</span></div>
+  <div class="aluno nao">JOHN CALEBE <span>Não pago</span></div>
+  <div class="aluno nao">JULIANA NAYRA <span>Não pago</span></div>
+  <div class="aluno nao">LUCAS LOHAN <span>Não pago</span></div>
+  <div class="aluno nao">MARCONE <span>Não pago</span></div>
+  <div class="aluno nao">MARIA CLARA LIMA <span>Não pago</span></div>
+  <div class="aluno nao">MARIA CLARA MENDES <span>Não pago</span></div>
+  <div class="aluno nao">MARIA JOANA <span>Não pago</span></div>
+  <div class="aluno nao">RANE GEOVANA <span>Não pago</span></div>
+  <div class="aluno nao">RICHARLYSON <span>Não pago</span></div>
+  <div class="aluno nao">ROBERTA <span>Não pago</span></div>
+  <div class="aluno nao">SÁVIO <span>Não pago</span></div>
+  <div class="aluno nao">STEFANY <span>Não pago</span></div>
+  <div class="aluno nao">THIAGO <span>Não pago</span></div>
+  <div class="aluno nao">VANDA <span>Não pago</span></div>
+  <div class="aluno nao">WENDELL <span>Não pago</span></div>
+  <div class="aluno nao">YANA <span>Não pago</span></div>
 
-  <div class="card" style="text-align:center;">
-    <h2>💰 Total em Caixa</h2>
-    <p style="font-size: 40px; font-weight: bold; color: #27ae60;">
-      R$ <span id="total">0</span>
-    </p>
-    <p style="color: #777;">Atualizado automaticamente</p>
-  </div>
+</section>
 
-</div>
+<section class="total">
+  <h2>Total em Caixa</h2>
+  <p id="total">R$ 0</p>
+</section>
 
 <script>
-const valorMensal = 5;
+const valor = 0;
+const pagos = document.querySelectorAll(".pago").length;
+const total = pagos * valor;
 
-const alunos = [
-  "ALEXANDRE", "ALANE BEATRIZ", "AMARA VITÓRIA", "ANA CAROLINE", "ANGÊLO GABRIEL", "ANGÊLO VINICIUS", "ARIELLY", "GISELY", "GLÓRIA", "GUSTAVO CASTRO", "GUSTAVO HENRIQUE", "ILAN CASSIO", "JOÃO GABRIEL", "JOÃO HENRIQUE", "JOÃO LUCAS", "JOHN CALEBE", "JULIANA NAYRA", "LUCAS LOHAN", "MARCONE", "MARIA CLARA LIMA", "MARIA CLARA MENDES", "MARIA JOANA", "RANE GEOVANA", "RICHARLYSON", "ROBERTA", "SÁVIO", "STEFANY", "THIAGO", "VANDA", "WENDELL", "YANA"
-];
-
-let pagamentos = JSON.parse(localStorage.getItem("pagamentos")) || {};
-
-const tabela = document.getElementById("tabelaPagamentos");
-const totalSpan = document.getElementById("total");
-
-// 🔒 verifica se é admin
-const params = new URLSearchParams(window.location.search);
-const isAdmin = params.get("admin") === "123";
-
-function renderPagamentos() {
-  tabela.innerHTML = `
-    <tr>
-      <th>Nome</th>
-      <th>Status</th>
-      <th>Ação</th>
-    </tr>
-  `;
-
-  let total = 0;
-
-  alunos.forEach(nome => {
-    const row = document.createElement("tr");
-
-    const nomeTd = document.createElement("td");
-    nomeTd.textContent = nome;
-
-    const statusTd = document.createElement("td");
-
-    if (pagamentos[nome]) {
-      statusTd.innerHTML = `✅ Pago em: ${pagamentos[nome]}`;
-      total += valorMensal;
-    } else {
-      statusTd.innerHTML = `❌ Não pago`;
-    }
-
-    const btnTd = document.createElement("td");
-
-    if (isAdmin) {
-      const btn = document.createElement("button");
-      btn.textContent = "Marcar";
-      btn.className = "btn";
-
-      btn.onclick = () => {
-        const hoje = new Date().toLocaleDateString();
-        pagamentos[nome] = hoje;
-        localStorage.setItem("pagamentos", JSON.stringify(pagamentos));
-        renderPagamentos();
-      };
-
-      btnTd.appendChild(btn);
-    } else {
-      btnTd.innerHTML = "🔒";
-    }
-
-    row.appendChild(nomeTd);
-    row.appendChild(statusTd);
-    row.appendChild(btnTd);
-
-    tabela.appendChild(row);
-  });
-
-  totalSpan.textContent = total.toFixed(2);
-}
-
-renderPagamentos();
+document.getElementById("total").textContent = "R$ " + total.toFixed(2);
 </script>
 
 </body>
