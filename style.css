@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(180deg, #0f2027, #203a43, #2c5364);
+  color: rgb(255, 255, 255);
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 1px;
+}
+
+.topo {
+  text-align: center;
+  padding: 20px;
+}
+
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #8c7446;
+}
+
+.hero h2 {
+  font-size: 32px;
+}
+
+.pix {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  background: #162a33;
+  border-radius: 12px;
+  margin: 20px;
+}
+
+.pix img {
+  width: 150px;
+}
+
+.lista {
+  padding: 20px;
+}
+
+.lista h2 {
+  margin-bottom: 20px;
+}
+
+.aluno {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.05);
+  transition: 0.3s;
+  border: 1px solid #8c7446;
+}
+
+.aluno:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.aluno span {
+  font-weight: bold;
+}
+
+.pago span {
+  color: #016b03;
+}
+
+.nao span {
+  color: #fbf8f8;
+}
+
+.total {
+  text-align: center;
+  padding: 50px;
+  background-color: #8c7446;
+}
+
+#total {
+  font-size: 48px;
+  color: #f4f8f6;
+  font-weight: bold;
+}
