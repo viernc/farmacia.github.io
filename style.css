@@ -5,20 +5,17 @@ body {
   color: #f5f5f5;
 }
 
-/* títulos */
 h1, h2, h3 {
   font-family: 'Playfair Display', serif;
   letter-spacing: 1px;
 }
 
-/* topo */
 .topo {
   text-align: center;
   padding: 20px;
   color: #d4af37;
 }
 
-/* hero (faixa dourada) */
 .hero {
   text-align: center;
   padding: 40px 20px;
@@ -26,7 +23,6 @@ h1, h2, h3 {
   color: #fff;
 }
 
-/* pix */
 .pix {
   display: flex;
   justify-content: space-between;
@@ -41,7 +37,6 @@ h1, h2, h3 {
   width: 120px;
 }
 
-/* lista */
 .lista {
   padding: 20px;
 }
@@ -51,7 +46,6 @@ h1, h2, h3 {
   color: #d4af37;
 }
 
-/* alunos (linha estilo elegante) */
 .aluno {
   display: flex;
   justify-content: space-between;
@@ -60,27 +54,22 @@ h1, h2, h3 {
   font-size: 14px;
 }
 
-/* hover suave */
 .aluno:hover {
   background: rgba(255, 255, 255, 0.03);
 }
 
-/* status */
 .aluno span {
   font-weight: 500;
 }
 
-/* pago */
 .pago span {
   color: #4cd964;
 }
 
-/* não pago */
 .nao span {
   color: #cccccc;
 }
 
-/* total (faixa destaque) */
 .total {
   text-align: center;
   padding: 50px;
