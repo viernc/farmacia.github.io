@@ -35,6 +35,7 @@ h1, h2, h3 {
 
 .pix img {
   width: 120px;
+  border-radius: 8px;
 }
 
 .lista {
@@ -42,16 +43,34 @@ h1, h2, h3 {
 }
 
 .lista h2 {
-  margin-bottom: 20px;
   color: #d4af37;
+  margin-bottom: 20px;
 }
 
+/* CABEÇALHO DA TABELA */
+
+.cabecalho {
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr;
+  gap: 10px;
+  padding: 14px;
+  background: #8c7446;
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* LINHAS DOS ALUNOS */
+
 .aluno {
-  display: flex;
-  justify-content: space-between;
-  padding: 14px 10px;
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr;
+  gap: 10px;
+  align-items: center;
+  padding: 14px;
   border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-  font-size: 14px;
+  transition: 0.3s;
 }
 
 .aluno:hover {
@@ -59,16 +78,19 @@ h1, h2, h3 {
 }
 
 .aluno span {
-  font-weight: 500;
+  word-break: break-word;
 }
 
-.pago span {
-  color: #4cd964;
+/* COLUNAS DE VALORES */
+
+.maio,
+.junho {
+  text-align: center;
+  font-weight: 600;
+  color: #d4af37;
 }
 
-.nao span {
-  color: #cccccc;
-}
+/* TOTAL */
 
 .total {
   text-align: center;
@@ -81,4 +103,36 @@ h1, h2, h3 {
   font-size: 48px;
   color: #d4af37;
   font-weight: bold;
+}
+
+/* CELULAR */
+
+@media (max-width: 768px) {
+
+  .pix {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .pix img {
+    margin-top: 15px;
+  }
+
+  .cabecalho,
+  .aluno {
+    grid-template-columns: 2fr 1fr 1fr;
+    font-size: 13px;
+  }
+
+  #total {
+    font-size: 36px;
+  }
+
+  .topo h1 {
+    font-size: 28px;
+  }
+
+  .hero h2 {
+    font-size: 24px;
+  }
 }
